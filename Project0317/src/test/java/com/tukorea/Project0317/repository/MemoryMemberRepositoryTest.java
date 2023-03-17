@@ -1,6 +1,7 @@
 package com.tukorea.Project0317.repository;
 
 import com.tukorea.Project0317.domain.Member;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,11 @@ import java.util.List;
 public class MemoryMemberRepositoryTest {
     MemoryMemberRepository repo = new MemoryMemberRepository();
 
+    @AfterEach
+    public void afterEach(){
+        //테스트 메소드 실행 후 매번 실행되는 메소드, store 객체 비움 진행
+        repo.clearStorage();
+    }
     @Test
     public void testInsertMember() {
         // 회원 정보 설정
