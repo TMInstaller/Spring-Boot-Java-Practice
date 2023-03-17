@@ -7,7 +7,10 @@ import com.tukorea.Project0317.repository.MemoryMemberRepository;
 import java.util.List;
 
 public class MemberService {
-    private final MemberRepositoryIF repo = new MemoryMemberRepository();
+    private final MemberRepositoryIF repo;
+    public MemberService(MemberRepositoryIF repo){
+        this.repo = repo;
+    }
     public int join(Member member){
         // 회원가입 서비스 메서드 구현
         // 같은 이름의 회원은 가입 불가
