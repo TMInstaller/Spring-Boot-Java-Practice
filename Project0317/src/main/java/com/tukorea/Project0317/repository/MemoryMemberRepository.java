@@ -43,4 +43,13 @@ public class MemoryMemberRepository implements MemberRepositoryIF{
         // store 객체를 List 형태로 변환하여 return
         return new ArrayList<>(store.values());
     }
+
+    public void clearStorage() {
+        // store 객체 비움 구현 메소드
+        // sequence 초기화
+        sequence = 0;
+
+        // store 객체 비우기
+        store.clear();
+    }
 }
