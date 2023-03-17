@@ -1,13 +1,23 @@
 package com.tukorea.Project0317.repository;
 
 import com.tukorea.Project0317.domain.Member;
+import com.tukorea.Project0317.service.MemberService;
+import com.tukorea.Project0317.service.MemberServiceTest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 public class MemoryMemberRepositoryTest {
-    MemoryMemberRepository repo = new MemoryMemberRepository();
+    MemberService service;
+    MemoryMemberRepository repo;
+
+    @BeforeEach
+    void beforeEach() {
+        repo = new MemoryMemberRepository();
+        service = new MemberService(repo);
+    }
 
     @AfterEach
     public void afterEach(){
