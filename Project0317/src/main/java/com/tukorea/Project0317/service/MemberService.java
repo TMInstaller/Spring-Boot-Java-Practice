@@ -3,11 +3,16 @@ package com.tukorea.Project0317.service;
 import com.tukorea.Project0317.domain.Member;
 import com.tukorea.Project0317.repository.MemberRepositoryIF;
 import com.tukorea.Project0317.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MemberService {
     private final MemberRepositoryIF repo;
+
+    @Autowired
     public MemberService(MemberRepositoryIF repo){
         this.repo = repo;
     }

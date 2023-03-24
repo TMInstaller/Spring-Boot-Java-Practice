@@ -1,9 +1,11 @@
 package com.tukorea.Project0317.repository;
 
 import com.tukorea.Project0317.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepositoryIF{
     private static Map<Integer, Member> store = new HashMap<>();
     private static int sequence = 0;
