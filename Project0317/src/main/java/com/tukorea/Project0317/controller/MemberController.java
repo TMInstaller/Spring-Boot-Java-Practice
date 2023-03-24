@@ -4,9 +4,12 @@ package com.tukorea.Project0317.controller;
 // 그럼 Controller 라고 어노테이션이 설정된 클래스의 객체를 생성해서
 // 해당 컨테이너에 넣어두고 스프링이 관리함
 
+import com.tukorea.Project0317.domain.Member;
 import com.tukorea.Project0317.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MemberController {
@@ -20,5 +23,23 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService service){
         this.service = service;
+    }
+
+    @GetMapping("/members/new")
+    public String createForm() {
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form){
+        // 회원 가입에 사용할 Member 객체 생성 후 설정
+        Member member = new Member();
+        member.setName(form.getName());
+
+        // 회원가입 메서드 호출
+        service.join(member);
+
+        // 로직이 끝난 후 홈화면으로 redirect 진행
+        return "redirect:/";
     }
 }
