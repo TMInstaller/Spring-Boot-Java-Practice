@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tukorea.board.dao.BoardMapper">
+    <insert id="insertBoard" parameterType="com.tukorea.board.domain.Board">
+        INSERT INTO TB_BOARD(
+            TITLE,
+            WRITER,
+            PASSWORD,
+            CONTENTS,
+            HITS,
+            REG_DT,
+            MOD_DT
+        ) VALUES (
+            #{title},
+            #{writer},
+            SHA2(#{password}, 256),
+            #{contents},
+            0,
+            NOW(),
+            NOW()
+        )
+    </insert>
+</mapper>
