@@ -21,4 +21,25 @@
             NOW()
         )
     </insert>
+    <!-- 게시판 총 건수 조회 -->
+    <select id="selectBoardListTotalCount" parameterType="java.util.HashMap" resultType="Integer">
+        SELECT
+            COUNT(*) AS TOTAL_CNT
+        FROM
+            TB_BOARD
+    </select>
+    <!-- 게시판 목록 조회 -->
+    <select id="selectBoardList" parameterType="java.util.HashMap" resultType="com.tukorea.board.domain.Board">
+        SELECT
+            BOARD_SEQ,
+            TITLE,
+            WRITER,
+            HITS,
+            DATE_FORMAT(REG_DT, '%Y-%m-%d %H:%i') AS REG_DT
+        FROM
+            TB_BOARD
+        ORDER BY
+            BOARD_SEQ DESC
+        LIMIT ${startNum}, ${listNum}
+    </select>
 </mapper>
