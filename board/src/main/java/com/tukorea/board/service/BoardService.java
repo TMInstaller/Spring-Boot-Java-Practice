@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -19,7 +20,8 @@ public class BoardService {
     public BoardService(BoardMapper mapper) {
         this.mapper = mapper;
     }
-    public void addBoard(BoardForm boardForm){
+
+    public void addBoard(BoardForm boardForm) {
         try {
             // 등록용 파라미터 정제(DTO -> Domain)
             Board board = new Board();
@@ -31,12 +33,13 @@ public class BoardService {
             // 게시판 등록
             int resultCount = mapper.insertBoard(board);
             System.out.println("게시판 등록 완료 (건수 : " + resultCount + "건");
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    pubcic Map<String, Object> getBoardList(int pageNum){
+
+    <String, Object> getBoardList(int pageNum) {
         Map<String, Object> result = new HashMap<String, Object>();
 
         try {
@@ -60,7 +63,7 @@ public class BoardService {
             List<BoardList> boardList = new ArrayList<BoardList>();
             int listStartNum = ((pageNum - 1) * listNum) + 1;
 
-            for(Board board: dbBoardList){
+            for (Board board : dbBoardList) {
                 BoardList listObj = new BoardList();
 
                 listObj.setNo(listStartNum++); // NO
